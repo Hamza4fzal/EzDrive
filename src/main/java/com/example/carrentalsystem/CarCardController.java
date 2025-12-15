@@ -36,7 +36,6 @@ public class CarCardController {
     public void setData(Car car) {
         this.car = car;
         modelLabel.setText(car.getBrand() + " " + car.getModel());
-        priceLabel.setText("$" + car.getPricePerDay());
 
         // Load the real image
         try {
