@@ -1,0 +1,70 @@
+/* --- 1. GENERAL BACKGROUND --- */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif; /* Clean modern font */
+    -fx-background-color: #f4f4f9; /* Soft gray background (easier on eyes) */
+}
+
+/* --- 2. CAR CARDS (The White Boxes) --- */
+.car-card {
+    -fx-background-color: #ccd5ae;
+    -fx-background-radius: 15; /* Rounded Corners */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5); /* Soft Shadow */
+    -fx-padding: 10;
+}
+
+/* HOVER EFFECT: When mouse is over a car, the whole card glows slightly */
+.car-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 15, 0, 0, 5);
+    -fx-cursor: hand;
+}
+
+/* --- 3. LABELS --- */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.price-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60; /* Green color for money */
+}
+
+.model-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* --- 4. BUTTONS (Modern Flat Look) --- */
+.button {
+    -fx-background-color: #eb1414; /* Your Red Color */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20; /* Pill shape */
+    -fx-padding: 8 20 8 20;
+}
+
+.button:hover {
+    -fx-background-color: #c0392b; /* Darker red when hovering */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
+}
+
+/* --- 5. IMAGE BORDERS (Solid Black Border) --- */
+#carImage {
+    /* Format: dropshadow(type, color, radius, spread, x, y)
+       - Color: #000000 (Black)
+       - Radius: 5 (Border Thickness)
+       - Spread: 1.0 (Makes it SOLID, not blurry)
+    */
+    -fx-effect: dropshadow(three-pass-box, #000000, 5, 1.0, 0, 0);
+
+    /* Optional: Rounds the image corners slightly */
+    -fx-background-radius: 5;
+}
+
+/* When hovering over the card, turn the image border Red */
+.car-card:hover #carImage {
+     -fx-effect: dropshadow(three-pass-box, #eb1414, 5, 1.0, 0, 0);
+}
