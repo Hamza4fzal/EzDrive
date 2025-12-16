@@ -35,33 +35,41 @@ public class CarCardController {
     // This method is called by MainController to set the data
     public void setData(Car car) {
         this.car = car;
-        modelLabel.setText(car.getBrand() + " " + car.getModel());
 
-        // Load the real image
+        // 1. Set Text Data
+        modelLabel.setText(car.getBrand() + " " + car.getModel());
+        priceLabel.setText("PKR " + car.getPricePerDay());
+
+        // 2. Load the Image
         try {
-            // This looks for the file name (e.g., "alto.png") in your resources folder
-            Image image = new Image(getClass().getResourceAsStream(car.getImagePath()));
-            carImage.setImage(image);
+            if (car.getImagePath() != null) {
+                Image image = new Image(getClass().getResourceAsStream(car.getImagePath()));
+                carImage.setImage(image);
+            }
         } catch (Exception e) {
             System.out.println("Image not found for " + car.getModel());
         }
+
+        // 3. FIX: Style the VBox (Card Look)
+        // This adds a white background, rounded corners, and a soft shadow
+        VboxCard.setStyle("-fx-background-color: white;" +
+                "-fx-background-radius: 15;" +
+                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);");
     }
 
-    // --- NEW: Handle the "Book Now" Button Click ---
+    // --- Handle the "Book Now" Button Click ---
     @FXML
     private void onBookNowClick() {
         try {
-            // 1. Load the Booking Page layout
+            // Load the Booking View
             FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingView.fxml"));
             Parent root = loader.load();
 
-            // 2. Get the controller for the Booking Page
+            // Get the controller and pass the car data
             BookingController bookingController = loader.getController();
-
-            // 3. Pass the car data (Model, Price, Image) to the Booking Page
             bookingController.setCarData(this.car);
 
-            // 4. Show the new window
+            // Show the new window
             Stage stage = new Stage();
             stage.setTitle("Booking - " + car.getBrand() + " " + car.getModel());
             stage.setScene(new Scene(root));
@@ -69,7 +77,7 @@ public class CarCardController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error loading BookingView.fxml. Check if the file name is correct.");
+            System.out.println("Error loading BookingView.fxml. Check your file name!");
         }
     }
 }

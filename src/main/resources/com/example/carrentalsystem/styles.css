@@ -68,3 +68,10 @@
 .car-card:hover #carImage {
      -fx-effect: dropshadow(three-pass-box, #eb1414, 5, 1.0, 0, 0);
 }
+.navbar {
+    -fx-background-color: white;
+    -fx-padding: 15 30 15 30; /* Adds space around the bigger logo */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 0, 5, 0, 2);
+    -fx-border-color: transparent transparent #e0e0e0 transparent;
+    -fx-border-width: 1;
+}

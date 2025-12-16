@@ -52,7 +52,7 @@ public class BookingController {
 
         // Update the labels on the screen
         carModelLabel.setText(car.getBrand() + " " + car.getModel());
-        totalPriceLabel.setText("$" + car.getPricePerDay() + " / day");
+        totalPriceLabel.setText("Pkr-" + car.getPricePerDay() + " / day");
 
         // Try to load the image safely
         try {
@@ -126,7 +126,7 @@ public class BookingController {
                 "Return Date: " + end + "\n" +
                 "Total Days: " + days + "\n" +
                 "--------------------------\n" +
-                "TOTAL AMOUNT: $" + finalPrice + "\n\n" +
+                "TOTAL AMOUNT: Pkr" + finalPrice + "\n\n" +
                 "(Data saved to bookings.csv)";
 
         // 8. Show Success Popup
